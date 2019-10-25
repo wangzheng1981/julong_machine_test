@@ -15,7 +15,8 @@ class _LoginRouteState extends State<LoginRoute> {
   @override
   void initState() {
     // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
-    _unameController.text = Global.profile.lastLogin;
+//    _unameController.text = Global.profile.lastLogin;
+    _unameController.text ="wangzhang";
     if (_unameController.text != null) {
       _nameAutoFocus = false;
     }
@@ -90,28 +91,28 @@ class _LoginRouteState extends State<LoginRoute> {
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
-      showLoading(context);
-      User user;
+//      showLoading(context);
+//      User user;
       try {
-        user = await Git(context)
-            .login(_unameController.text, _pwdController.text);
-        // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
-        Provider.of<UserModel>(context, listen: false).user = user;
+//        user = await Git(context)
+//            .login(_unameController.text, _pwdController.text);
+//        // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
+//        Provider.of<UserModel>(context, listen: false).user = user;
       } catch (e) {
         //登录失败则提示
         if (e.response?.statusCode == 401) {
-          showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
+//          showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
         } else {
-          showToast(e.toString());
+//          showToast(e.toString());
         }
       } finally {
         // 隐藏loading框
         Navigator.of(context).pop();
       }
-      if (user != null) {
-        // 返回
-        Navigator.of(context).pop();
-      }
+//      if (user != null) {
+//        // 返回
+//        Navigator.of(context).pop();
+//      }
     }
   }
 }
