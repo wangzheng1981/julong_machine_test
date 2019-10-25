@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "auto" : MessageLookupByLibrary.simpleMessage("跟随系统"),
     "cancel" : MessageLookupByLibrary.simpleMessage("取消"),
-    "home" : MessageLookupByLibrary.simpleMessage("Github客户端"),
+    "home" : MessageLookupByLibrary.simpleMessage("机器设置App"),
     "language" : MessageLookupByLibrary.simpleMessage("语言"),
     "login" : MessageLookupByLibrary.simpleMessage("登录"),
     "logout" : MessageLookupByLibrary.simpleMessage("注销"),

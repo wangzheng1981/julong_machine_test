@@ -26,7 +26,7 @@ class GmLocalizations {
     );
   }
 
-  String get home => Intl.message('Github', name: 'home');
+  String get home => Intl.message('JLMachineTest', name: 'home');
 
   String get language => Intl.message('Language', name: 'language');
 

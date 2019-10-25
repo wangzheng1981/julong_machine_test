@@ -14,6 +14,7 @@ const _themes = <MaterialColor>[
 
 class Global {
   static SharedPreferences _prefs;
+  static Profile profile = Profile();
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
 
@@ -23,6 +24,24 @@ class Global {
   //初始化全局信息
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
+    _prefs = await SharedPreferences.getInstance();
+    var _profile = _prefs.getString("profile");
+    if (_profile != null) {
+      try {
+        profile = Profile.fromJson(jsonDecode(_profile));
+      } catch (e) {
+        print(e);
+      }
+    }
+
+    // 如果没有缓存策略，设置默认缓存策略
+    profile.cache = profile.cache ?? CacheConfig()
+      ..enable = true
+      ..maxAge = 3600
+      ..maxCount = 100;
+
   }
+  static saveProfile() =>
+      _prefs.setString("profile", jsonEncode(profile.toJson()));
 
 }
