@@ -92,12 +92,16 @@ class _LoginRouteState extends State<LoginRoute> {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
       showLoading(context);
-      Provider.of<String>(context, listen: false).isLogin = "false";
+      UserModel userModel = Provider.of<UserModel>(context);
+      userModel.isLogin = false;
       if (_unameController.text == "test" && _pwdController.text == "1") {
+        userModel.isLogin=true;
         Navigator.of(context).pop();
         Navigator.of(context).pop();
       } else {
         showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
+        Navigator.of(context).pop();
+        Navigator.of(context).pop();
       }
     }
   }

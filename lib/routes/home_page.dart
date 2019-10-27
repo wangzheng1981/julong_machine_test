@@ -22,6 +22,7 @@ class _HomeRouteState extends State<HomeRoute> {
   Widget _buildBody() {
     UserModel userModel = Provider.of<UserModel>(context);
 //    if (!userModel.isLogin)
+    print(userModel.isLogin);
     if (!userModel.isLogin) {
       //用户未登录，显示登录按钮
       return Center(
@@ -32,9 +33,9 @@ class _HomeRouteState extends State<HomeRoute> {
       );
     } else {
       return Center(
-        child: RaisedButton(
-          child: Text(GmLocalizations.of(context).login),
-          onPressed: () => Navigator.of(context).pushNamed("login"),
+        child: Text(
+          "Hello world",
+          textAlign: TextAlign.left,
         ),
       );
     }
@@ -56,7 +57,7 @@ class MyDrawer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            _buildHeader(), //构建抽屉菜单头部
+          //  _buildHeader(), //构建抽屉菜单头部
             Expanded(child: _buildMenus()), //构建功能菜单
           ],
         ),
@@ -143,6 +144,7 @@ class MyDrawer extends StatelessWidget {
                             onPressed: () {
                               //该赋值语句会触发MaterialApp rebuild
                               userModel.user = null;
+                              userModel.isLogin=false;
                               Navigator.pop(context);
                             },
                           ),
