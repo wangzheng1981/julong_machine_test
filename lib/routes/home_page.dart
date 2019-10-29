@@ -1,6 +1,7 @@
 import '../index.dart';
 import 'package:flukit/flukit.dart';
 import 'package:provider/provider.dart';
+import 'machinesetting.dart';
 
 class HomeRoute extends StatefulWidget {
   @override
@@ -33,10 +34,11 @@ class _HomeRouteState extends State<HomeRoute> {
       );
     } else {
       return Center(
-        child: Text(
-          "Hello world",
-          textAlign: TextAlign.left,
-        ),
+        child:MachineSettingRoute(),
+//        child: Text(
+//          "Hello world",
+//          textAlign: TextAlign.left,
+//        ),
       );
     }
   }
